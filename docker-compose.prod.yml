@@ -9,7 +9,7 @@ services:
     restart: on-failure
     networks:
       - bigcapital_network
-      - traefik
+      - dokploy-network
     labels:
       - traefik.enable=true
       - traefik.http.routers.bigcapital-client.rule=Host(`accounting.mutualfriend.id`)
@@ -33,7 +33,7 @@ services:
     restart: on-failure
     networks:
       - bigcapital_network
-      - traefik
+      - dokploy-network
     labels:
       - traefik.enable=true
       - traefik.http.routers.bigcapital-server.rule=Host(`accounting.mutualfriend.id`) && PathPrefix(`/api`)
@@ -206,5 +206,5 @@ volumes:
 networks:
   bigcapital_network:
     driver: bridge
-  traefik:
+  dokploy-network:
     external: true
